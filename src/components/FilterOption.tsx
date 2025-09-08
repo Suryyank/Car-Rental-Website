@@ -1,6 +1,10 @@
 import React from "react";
 
-const FilterOption = () => {
+type FilterProps = {
+  brands: string[];
+};
+
+const FilterOption = ({ brands }: FilterProps) => {
   return (
     <div className="mt-10 flex justify-between">
       <div>
@@ -22,8 +26,11 @@ const FilterOption = () => {
           className="select bg-white font-bold text-black w-auto md:block hidden"
         >
           <option disabled={true}>Manufacturer</option>
-          <option>Honda</option>
-          <option>Highest</option>
+          {brands.map((brand) => (
+            <option key={brand} value={brand}>
+              {brand}
+            </option>
+          ))}
         </select>
       </div>
     </div>
