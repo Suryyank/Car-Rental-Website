@@ -1,6 +1,7 @@
 import request, { gql } from "graphql-request";
+import { Car } from "./types";
 
-export const getCarsList = async () => {
+export const getCarsList = async (): Promise<Car[]> => {
   const query = gql`
     {
       carLists {
@@ -17,12 +18,12 @@ export const getCarsList = async () => {
       }
     }
   `;
-  const result: any = await request(
+  const result = await request<{ carLists: Car[] }>(
     "https://ap-south-1.cdn.hygraph.com/content/cmf76qzvl00ql08vvu5pgdpjh/master",
     query
   );
 
-  return result;
+  return result.carLists;
 };
 
 /*--------------------------------------------------------*/

@@ -3,12 +3,15 @@ import FilterOption from "@/components/FilterOption";
 import Hero from "@/components/Hero";
 import SearchInput from "@/components/SearchInput";
 import { getCarsList, getCarBrands } from "../../service";
+import { Car } from "../../service/types";
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import CarCard from "@/components/CarCard";
+import CarList from "@/components/CarList";
 
 export default function Home() {
-  const [carList, setCarList] = useState<any[]>([]);
+  const [carsList, setCarsList] = useState<Car[]>([]);
   const [brandList, setBrandList] = useState<string[]>([]);
 
   useEffect(() => {
@@ -17,6 +20,7 @@ export default function Home() {
 
   const getCarsList_ = async () => {
     const result: any = await getCarsList();
+    setCarsList(result);
     console.log(result);
   };
   //
@@ -35,6 +39,7 @@ export default function Home() {
       <Hero />
       <SearchInput />
       <FilterOption brands={brandList} />
+      <CarList carList={carsList} />
     </div>
   );
 }
