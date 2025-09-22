@@ -8,11 +8,16 @@ import Button from "./atoms/Button";
 const CarCard = (props: any) => {
   const [car, setCar] = useState(props.car);
   return (
-    <div className=" rounded-2xl px-8 py-3 hover:scale-105 hover:border-1 border-blue-600 duration-210 mt-5 flex flex-col items-center bg-gray-400/10 shadow-lg">
-      <h2 className="text-[25px] font-bold text-black mb-2">{car.name}</h2>
-      <h2 className="text-[22px] font-extrabold text-black">
+    <div className=" rounded-2xl px-8 py-3 hover:scale-105 hover:border-2 border-primary duration-210 mt-5 flex flex-col items-center bg-gray-400/10 shadow-lg">
+      <h2 className="text-[25px] font-bold text-black mb-2 font-mono">
+        {car.name}
+      </h2>
+      <h2 className="text-[22px] font-extrabold text-black font-mono">
         ₹ {car.price}
-        <span className="text-[18px text-black font-semibold"> /day</span>
+        <span className="text-[18px text-black font-semibold font-mono">
+          {" "}
+          /day
+        </span>
       </h2>
 
       <Image
@@ -33,7 +38,7 @@ const CarCard = (props: any) => {
           <h2 className="text-black font-medium">{car.carAvg}/kmpl</h2>
         </div>
       </div>
-      <div className="hidden mt-8 mb-1.5">
+      <div className="mt-8 mb-1.5">
         <Button
           title={"Rent"}
           className="hover:scale-110 w-[150px] font-bold"

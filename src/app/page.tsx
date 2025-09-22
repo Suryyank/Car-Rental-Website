@@ -13,6 +13,8 @@ import CarList from "@/components/CarList";
 export default function Home() {
   const [carsList, setCarsList] = useState<Car[]>([]);
   const [brandList, setBrandList] = useState<string[]>([]);
+  const [brandOption, setBrandOption] = useState<string>("");
+  const [minMax, setMinMax] = useState<string>("");
 
   useEffect(() => {
     getCarsList_();
@@ -34,11 +36,26 @@ export default function Home() {
     getCarBrands_();
   }, []);
 
+  ///////
+
+  useEffect(() => {
+    console.log("Brand changed:", brandOption);
+  }, [brandOption]);
+
+  useEffect(() => {
+    console.log("Filter changed:", minMax);
+  }, [minMax]);
+
   return (
     <div className="p-5 sm:px-10 md:px-20">
       <Hero />
       <SearchInput />
-      <FilterOption brands={brandList} />
+      <FilterOption
+        brands={brandList}
+        setBrandOption={setBrandOption}
+        setMinMax={setMinMax}
+      />
+
       <CarList carList={carsList} />
     </div>
   );

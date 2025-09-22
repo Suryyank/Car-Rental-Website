@@ -10,6 +10,8 @@ import {
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
+import { ThemeContextProvider } from "../../contexts/themecontext";
+import { ThemeWrapper } from "../../contexts/themeWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -62,7 +64,11 @@ export default function RootLayout({
           </header>
 
           {/* Page content */}
-          <main>{children}</main>
+          <main>
+            <ThemeContextProvider>
+              <ThemeWrapper>{children}</ThemeWrapper>
+            </ThemeContextProvider>
+          </main>
         </body>
       </html>
     </ClerkProvider>

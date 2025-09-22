@@ -4,7 +4,7 @@ const SearchInput = () => {
   return (
     <div className="mt-5">
       <h2 className="text-gray-700 font-bold text-[20px] text-center mb-3">
-        What are you looking for?
+        Find Nearby
       </h2>
       <div className="flex justify-center">
         <div className="flex bg-gray-200 rounded-full px-5 gap-2 divide-x-1 divide-gray-300">

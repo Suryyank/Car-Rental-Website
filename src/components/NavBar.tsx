@@ -36,12 +36,12 @@ const NavBar = () => {
       <div>
         <SignedOut>
           <SignInButton>
-            <button className="px-3 py-2 md:px-4 rounded-2xl bg-blue-600 text-white font-mono shadow-md transition duration-200 hover:bg-blue-800 hover:cursor-pointer mx-1 md:mx-2">
+            <button className="px-3 py-2 md:px-4 rounded-2xl bg-primary text-white font-mono shadow-md transition duration-200 hover:bg-blue-800 hover:cursor-pointer mx-1 md:mx-2">
               Sign In
             </button>
           </SignInButton>
           <SignUpButton>
-            <button className="px-3 py-2 md:px-4 rounded-2xl bg-blue-600 text-white font-mono shadow-md transition duration-200 hover:bg-blue-800 hover:cursor-pointer mx-1 md:mx-2">
+            <button className="px-3 py-2 md:px-4 rounded-2xl bg-primary text-white font-mono shadow-md transition duration-200 hover:bg-blue-800 hover:cursor-pointer mx-1 md:mx-2">
               Sign Up
             </button>
           </SignUpButton>

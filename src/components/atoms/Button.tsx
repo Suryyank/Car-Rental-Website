@@ -19,7 +19,7 @@ const Button: React.FC<ButtonProps> = ({
     <button
       type={type}
       onClick={onClick}
-      className={`px-6 py-2 rounded-2xl bg-blue-600 text-white font-mono shadow-md transition duration-200 ${className}`}
+      className={`px-6 py-2 rounded-2xl bg-primary text-white font-mono shadow-md transition duration-200 ${className}`}
     >
       {title}
     </button>

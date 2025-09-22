@@ -2,9 +2,11 @@ import React from "react";
 
 type FilterProps = {
   brands: string[];
+  setBrandOption: React.Dispatch<React.SetStateAction<string>>;
+  setMinMax: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const FilterOption = ({ brands }: FilterProps) => {
+const FilterOption = ({ brands, setBrandOption, setMinMax }: FilterProps) => {
   return (
     <div className="mt-10 flex justify-between">
       <div>
@@ -13,8 +15,11 @@ const FilterOption = ({ brands }: FilterProps) => {
       </div>
       <div className="mt-3 flex gap-3">
         <select
-          defaultValue="Price"
+          defaultValue="Price Range"
           className="select bg-white font-bold text-black"
+          onChange={(e) => {
+            setMinMax(e.target.value);
+          }}
         >
           <option disabled={true}>Price Range</option>
           <option>Lowest</option>
@@ -24,8 +29,11 @@ const FilterOption = ({ brands }: FilterProps) => {
         <select
           defaultValue="Manufacturer"
           className="select bg-white font-bold text-black w-auto md:block hidden"
+          onChange={(e) => {
+            setBrandOption(e.target.value);
+          }}
         >
-          <option disabled={true}>Manufacturer</option>
+          <option disabled={true}>Brand</option>
           {brands.map((brand) => (
             <option key={brand} value={brand}>
               {brand}
