@@ -20,17 +20,17 @@ const NavBar = () => {
         <Button
           title="Home"
           type="button"
-          className="hover:bg-blue-800 hover:cursor-pointer"
+          className="hover:bg-secondary hover:cursor-pointer"
         />
         <Button
           title="History"
           type="button"
-          className="hover:bg-blue-800 hover:cursor-pointer"
+          className="hover:bg-secondary hover:cursor-pointer"
         />
         <Button
           title="Contact"
           type="button"
-          className="hover:bg-blue-800 hover:cursor-pointer"
+          className="hover:bg-secondary hover:cursor-pointer"
         />
       </div>
       <div>

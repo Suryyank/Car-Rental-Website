@@ -1,18 +1,29 @@
-import React, { useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
+import Headings from "./atoms/Headings";
+import { Car } from "../../service/types";
+import CarList from "./CarList";
 
-type LocationProps = {
-  location: string;
+type DebounceSearchProps = {
+  Headings?: React.ComponentType<{ title: string }>;
+  carList: Car[];
 };
 
-const SearchInput = ({ location }: LocationProps) => {
+const DebounceSearch = ({ Headings, carList }: DebounceSearchProps) => {
   const [filterLocation, SetFilterLocation] = useState("");
+  const [locationList, SetLocationList] = useState<String[]>();
+
+  /*--------------------------------------------------------*/
+
+  useEffect(() => {
+    SetLocationList(carList.);
+  }, [CarList]);
+
+  /*--------------------------------------------------------*/
   return (
-    <div className="mt-5">
-      <h2 className="text-gray-700 font-bold text-[20px] text-center mb-3">
-        Find Nearby
-      </h2>
+    <>
+      {Headings && <Headings title={"Find Near You"} />}
       <div className="flex justify-center">
-        <div className="flex bg-gray-200 rounded-full px-5 gap-2 divide-x-1 divide-gray-300">
+        <div className="flex bg-gray-200 rounded-full px-5">
           <div className="flex items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -32,20 +43,15 @@ const SearchInput = ({ location }: LocationProps) => {
               placeholder="Search Location"
               onChange={(e) => {
                 SetFilterLocation(e.target.value);
+                console.log(filterLocation);
               }}
               className="p-2 outline-none text-gray-600 bg-transparent"
             />
           </div>
-          {/* <div>
-            <input
-              type="date"
-              className="p-2 outline-none text-gray-400 bg-transparent"
-            />
-          </div> */}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
-export default SearchInput;
+export default DebounceSearch;

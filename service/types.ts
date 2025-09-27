@@ -4,6 +4,7 @@ export type Car = {
   carType: string;
   price: number;
   carAvg: number;
+  location: string;
   carImage: {
     url: string;
   };

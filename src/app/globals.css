@@ -7,12 +7,13 @@
 :root {
   --background: #ffffff;
   --color-primary: #155dfc;
+  --color-secondary: #193cb8;
   --foreground: #171717;
 }
 
 [data-theme="red"]{
   --color-primary: #dc2626;
-  --secondary: #f87171;
+  --color-secondary: #690202;
 }
 
 

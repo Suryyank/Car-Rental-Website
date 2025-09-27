@@ -13,6 +13,7 @@ export const getCarsList = async (): Promise<Car[]> => {
         price
         carType
         carBrand
+        location
         publishedAt
         updatedAt
       }
@@ -49,4 +50,29 @@ export const getCarBrands = async (): Promise<string[]> => {
   ].sort((a, b) => a.localeCompare(b));
 
   return uniqueBrands;
+};
+
+/*--------------------------------------------------------*/
+
+export const getLocationList = async (): Promise<string[]> => {
+  const locationquery = gql`
+    {
+      carLists {
+        location
+      }
+    }
+  `;
+
+  const result = await request<{
+    carLists: { location: string }[];
+  }>(
+    "https://ap-south-1.cdn.hygraph.com/content/cmf76qzvl00ql08vvu5pgdpjh/master",
+    locationquery
+  );
+
+  const uniqueLocations = [
+    ...new Set(result.carLists.map((car) => car.location)),
+  ].sort((a, b) => a.localeCompare(b));
+
+  return uniqueLocations;
 };

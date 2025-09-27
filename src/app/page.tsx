@@ -2,13 +2,15 @@
 import FilterOption from "@/components/FilterOption";
 import Hero from "@/components/Hero";
 import SearchInput from "@/components/SearchInput";
-import { getCarsList, getCarBrands } from "../../service";
+import { getCarsList, getCarBrands, getLocationList } from "../../service";
 import { Car } from "../../service/types";
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import CarCard from "@/components/CarCard";
 import CarList from "@/components/CarList";
+import DebounceSearch from "@/components/DebounceSearch";
+import Headings from "@/components/atoms/Headings";
 
 export default function Home() {
   const [carsList, setCarsList] = useState<Car[]>([]);
@@ -46,10 +48,17 @@ export default function Home() {
     console.log("Filter changed:", minMax);
   }, [minMax]);
 
+  /*---------------------------------------------------*/
+
+  const getLocationList = async () => {
+    const location = await getLocationList();
+  };
+
   return (
     <div className="p-5 sm:px-10 md:px-20">
       <Hero />
-      <SearchInput />
+      <DebounceSearch Headings={Headings} carList={carsList} />
+      {/* <SearchInput /> */}
       <FilterOption
         brands={brandList}
         setBrandOption={setBrandOption}
