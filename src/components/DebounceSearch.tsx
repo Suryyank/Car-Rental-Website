@@ -14,9 +14,7 @@ const DebounceSearch = ({ Headings, carList }: DebounceSearchProps) => {
 
   /*--------------------------------------------------------*/
 
-  useEffect(() => {
-    SetLocationList(carList.);
-  }, [CarList]);
+  useEffect(() => {}, [CarList]);
 
   /*--------------------------------------------------------*/
   return (

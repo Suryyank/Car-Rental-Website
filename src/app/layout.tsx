@@ -12,6 +12,10 @@ import "./globals.css";
 import NavBar from "@/components/NavBar";
 import { ThemeContextProvider } from "../../contexts/themecontext";
 import { ThemeWrapper } from "../../contexts/themeWrapper";
+import {
+  FilterContext,
+  FilterContextProvider,
+} from "../../contexts/FilterContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -65,9 +69,11 @@ export default function RootLayout({
 
           {/* Page content */}
           <main>
-            <ThemeContextProvider>
-              <ThemeWrapper>{children}</ThemeWrapper>
-            </ThemeContextProvider>
+            <FilterContextProvider>
+              <ThemeContextProvider>
+                <ThemeWrapper>{children}</ThemeWrapper>
+              </ThemeContextProvider>
+            </FilterContextProvider>
           </main>
         </body>
       </html>
