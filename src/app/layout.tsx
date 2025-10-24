@@ -16,6 +16,7 @@ import {
   FilterContext,
   FilterContextProvider,
 } from "../../contexts/FilterContext";
+import { LocationContextProvider } from "../../contexts/LocationContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -70,9 +71,11 @@ export default function RootLayout({
           {/* Page content */}
           <main>
             <FilterContextProvider>
-              <ThemeContextProvider>
-                <ThemeWrapper>{children}</ThemeWrapper>
-              </ThemeContextProvider>
+              <LocationContextProvider>
+                <ThemeContextProvider>
+                  <ThemeWrapper>{children}</ThemeWrapper>
+                </ThemeContextProvider>
+              </LocationContextProvider>
             </FilterContextProvider>
           </main>
         </body>

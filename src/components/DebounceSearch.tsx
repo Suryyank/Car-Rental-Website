@@ -1,27 +1,38 @@
-import React, { ReactNode, useEffect, useState } from "react";
-import Headings from "./atoms/Headings";
+import React, { ReactNode, useEffect, useState, useContext } from "react";
+import { useLocation } from "../../contexts/LocationContext";
+import { LocationContext } from "../../contexts/LocationContext";
 import { Car } from "../../service/types";
-import CarList from "./CarList";
 
+//Types
 type DebounceSearchProps = {
   Headings?: React.ComponentType<{ title: string }>;
   carList: Car[];
+  locationListArr: string[];
 };
 
-const DebounceSearch = ({ Headings, carList }: DebounceSearchProps) => {
-  const [filterLocation, SetFilterLocation] = useState("");
+//
+
+const DebounceSearch = ({ Headings, locationListArr }: DebounceSearchProps) => {
+  const [locationFilter, SetLocationFilter] = useState("");
   const [locationList, SetLocationList] = useState<String[]>();
 
   /*--------------------------------------------------------*/
+  const { location, setLocation } = useLocation();
 
-  useEffect(() => {}, [CarList]);
+  useEffect(() => {
+    setLocation({ location: locationFilter });
+    console.log("Location in context Changed");
+  }, [locationFilter, setLocation]);
 
   /*--------------------------------------------------------*/
+
+  //use context
+
   return (
     <>
       {Headings && <Headings title={"Find Near You"} />}
       <div className="flex justify-center">
-        <div className="flex bg-gray-200 rounded-full px-5">
+        <div className="flex bg-gray-200 rounded-full px-5 w-[300px]">
           <div className="flex items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -40,13 +51,20 @@ const DebounceSearch = ({ Headings, carList }: DebounceSearchProps) => {
               type="text"
               placeholder="Search Location"
               onChange={(e) => {
-                SetFilterLocation(e.target.value);
-                console.log(filterLocation);
+                SetLocationFilter(e.target.value);
+                console.log(locationFilter);
               }}
               className="p-2 outline-none text-gray-600 bg-transparent"
             />
           </div>
         </div>
+      </div>
+      <div className="flex flex-col w-[300px] items-center bg-gray-200 rounded-full">
+        {locationListArr.map((loc) => (
+          <h1 key={loc} className="text-black">
+            {loc}
+          </h1>
+        ))}
       </div>
     </>
   );

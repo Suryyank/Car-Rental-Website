@@ -6,7 +6,7 @@ export type FilterState = {
 };
 
 export type FilterContextTypes = {
-  filters: FilterState; // Changed from string | null to an object
+  filters: FilterState;
   setFilters: React.Dispatch<React.SetStateAction<FilterState>>;
 };
 
