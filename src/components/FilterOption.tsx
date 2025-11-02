@@ -39,7 +39,7 @@ const FilterOption = ({ brands }: FilterProps) => {
       <div className="mt-3 flex items-center gap-3">
         <select
           value={minMax}
-          className="select bg-white font-bold text-black"
+          className="select bg-white font-bold text-black md:block hidden"
           onChange={(e) => {
             setMinMax(e.target.value);
           }}
@@ -54,7 +54,7 @@ const FilterOption = ({ brands }: FilterProps) => {
 
         <select
           value={brandOption}
-          className="select bg-white font-bold text-black w-auto md:block hidden"
+          className="select bg-white font-bold text-black w-auto "
           onChange={(e) => {
             setBrandOption(e.target.value);
           }}
