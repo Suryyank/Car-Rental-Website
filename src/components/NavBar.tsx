@@ -33,6 +33,7 @@ const NavBar = () => {
           className="hover:bg-secondary hover:cursor-pointer"
         />
       </div>
+      <div className=""></div>
       {/* <div>
         <SignedOut>
           <SignInButton>
