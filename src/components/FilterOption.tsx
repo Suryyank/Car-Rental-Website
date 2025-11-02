@@ -5,10 +5,10 @@ import { useLocation } from "../../contexts/LocationContext";
 
 type FilterProps = {
   brands: string[];
-  price: string[];
+  //price: string[];
 };
 
-const FilterOption = ({ brands, price }: FilterProps) => {
+const FilterOption = ({ brands }: FilterProps) => {
   const [brandOption, setBrandOption] = useState<string>("");
   const [minMax, setMinMax] = useState<string>("");
 
