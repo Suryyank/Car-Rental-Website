@@ -1,13 +1,13 @@
 import React from "react";
 import Image from "next/image";
 import Button from "@/components/atoms/Button";
-import {
-  SignInButton,
-  SignUpButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
+// import {
+//   SignInButton,
+//   SignUpButton,
+//   SignedIn,
+//   SignedOut,
+//   UserButton,
+// } from "@clerk/nextjs";
 
 const NavBar = () => {
   return (
@@ -33,7 +33,7 @@ const NavBar = () => {
           className="hover:bg-secondary hover:cursor-pointer"
         />
       </div>
-      <div>
+      {/* <div>
         <SignedOut>
           <SignInButton>
             <button className="px-3 py-2 md:px-4 rounded-2xl bg-primary text-white font-mono shadow-md transition duration-200 hover:bg-blue-800 hover:cursor-pointer mx-1 md:mx-2">
@@ -49,7 +49,7 @@ const NavBar = () => {
         <SignedIn>
           <UserButton afterSignOutUrl="/" />
         </SignedIn>
-      </div>
+      </div> */}
     </div>
   );
 };
