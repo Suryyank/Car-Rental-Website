@@ -1,7 +1,10 @@
+"use client";
+
 import React, { useContext, useMemo } from "react";
 import CarCard from "./CarCard";
 import { Car } from "../../service/types";
 import { FilterContext } from "../../contexts/FilterContext";
+import { useLocation } from "../../contexts/LocationContext";
 
 type CarListProps = {
   carList: Car[];
@@ -9,17 +12,26 @@ type CarListProps = {
 
 const CarList = ({ carList }: CarListProps) => {
   const { filters } = useContext(FilterContext)!;
+  const { location } = useLocation();
 
   const filteredCars = useMemo(() => {
     console.log("Filtering");
+
+    const selectedBrand = filters.brand;
+    const selectedLocation = location.location;
+
     return carList.filter((car) => {
-      if (filters.brand === "" || filters.brand === "None") {
-        return true;
-      } else {
-        return car.carBrand === filters.brand;
-      }
+      const brandMatch =
+        selectedBrand === "" ||
+        selectedBrand === "None" ||
+        car.carBrand === selectedBrand;
+
+      const locationMatch =
+        selectedLocation === "" || car.location === selectedLocation;
+
+      return brandMatch && locationMatch;
     });
-  }, [carList, filters]);
+  }, [carList, filters, location]);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

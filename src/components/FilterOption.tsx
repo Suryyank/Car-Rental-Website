@@ -1,12 +1,14 @@
 import { useState, useEffect, useContext } from "react";
 import { FilterContext } from "../../contexts/FilterContext";
 import { TiDelete } from "react-icons/ti";
+import { useLocation } from "../../contexts/LocationContext";
 
 type FilterProps = {
   brands: string[];
+  price: string[];
 };
 
-const FilterOption = ({ brands }: FilterProps) => {
+const FilterOption = ({ brands, price }: FilterProps) => {
   const [brandOption, setBrandOption] = useState<string>("");
   const [minMax, setMinMax] = useState<string>("");
 

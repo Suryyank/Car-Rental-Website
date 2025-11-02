@@ -5,6 +5,7 @@ export const getCarsList = async (): Promise<Car[]> => {
   const query = gql`
     {
       carLists {
+        carId
         name
         carImage {
           url
