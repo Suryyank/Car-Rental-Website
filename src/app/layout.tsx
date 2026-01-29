@@ -9,7 +9,7 @@ import { type Metadata } from "next";
 // } from "@clerk/nextjs";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import NavBar from "@/components/NavBar";
+import NavBar from "@/components/molecule/NavBar";
 import { ThemeContextProvider } from "../../contexts/themecontext";
 import { ThemeWrapper } from "../../contexts/themeWrapper";
 import {
@@ -17,6 +17,7 @@ import {
   FilterContextProvider,
 } from "../../contexts/FilterContext";
 import { LocationContextProvider } from "../../contexts/LocationContext";
+import { ContextWrapper } from "../../contexts/ContextWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -69,13 +70,7 @@ export default function RootLayout({
 
         {/* Page content */}
         <main>
-          <FilterContextProvider>
-            <LocationContextProvider>
-              <ThemeContextProvider>
-                <ThemeWrapper>{children}</ThemeWrapper>
-              </ThemeContextProvider>
-            </LocationContextProvider>
-          </FilterContextProvider>
+          <ContextWrapper>{children}</ContextWrapper>
         </main>
       </body>
     </html>

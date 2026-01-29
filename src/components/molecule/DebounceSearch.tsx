@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useLocation } from "../../contexts/LocationContext";
-import { Car } from "../../service/types";
+import { useLocation } from "../../../contexts/LocationContext";
+import { Car } from "../../../service/types";
 import { GiButtonFinger } from "react-icons/gi";
 import { TiDelete } from "react-icons/ti";
 
@@ -37,7 +37,7 @@ const DebounceSearch = ({ Headings, locationListArr }: DebounceSearchProps) => {
       setFilteredLocations([]);
     } else {
       const results = locationListArr.filter((loc) =>
-        loc.toLowerCase().includes(locationFilter.toLowerCase())
+        loc.toLowerCase().includes(locationFilter.toLowerCase()),
       );
       setFilteredLocations(results);
     }

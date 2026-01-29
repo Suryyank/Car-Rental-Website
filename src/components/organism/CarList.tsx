@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useContext, useMemo } from "react";
-import CarCard from "./CarCard";
-import { Car } from "../../service/types";
-import { FilterContext } from "../../contexts/FilterContext";
-import { useLocation } from "../../contexts/LocationContext";
+import React, { useContext, useMemo, useState } from "react";
+import CarCard from "../molecule/CarCard";
+import { Car } from "../../../service/types";
+import { FilterContext } from "../../../contexts/FilterContext";
+import { useLocation } from "../../../contexts/LocationContext";
 
 type CarListProps = {
   carList: Car[];
@@ -36,7 +36,7 @@ const CarList = ({ carList }: CarListProps) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {filteredCars.map((car) => (
-        <CarCard key={car.name} car={car} />
+        <CarCard key={car.carId} car={car} />
       ))}
     </div>
   );

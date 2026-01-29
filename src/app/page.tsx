@@ -1,16 +1,18 @@
 "use client";
-import FilterOption from "@/components/FilterOption";
-import Hero from "@/components/Hero";
-import SearchInput from "@/components/SearchInput";
+import FilterOption from "@/components/molecule/FilterOption";
+import Hero from "@/components/molecule/Hero";
+import SearchInput from "@/components/molecule/SearchInput";
 import { getCarsList, getCarBrands, getLocationList } from "../../service";
 import { Car } from "../../service/types";
 import { FilterContext } from "../../contexts/FilterContext";
 
 import { useEffect, useState, useContext } from "react";
-import CarCard from "@/components/CarCard";
-import CarList from "@/components/CarList";
-import DebounceSearch from "@/components/DebounceSearch";
+import CarCard from "@/components/molecule/CarCard";
+import CarList from "@/components/organism/CarList";
+import DebounceSearch from "@/components/molecule/DebounceSearch";
 import Headings from "@/components/atoms/Headings";
+import CarModal from "@/components/molecule/CarModal";
+import { useModalContext } from "../../contexts/modal/ModalContext";
 
 export default function Home() {
   const [carsList, setCarsList] = useState<Car[]>([]);
@@ -20,6 +22,8 @@ export default function Home() {
 
   const filterstate = useContext(FilterContext);
   console.log(filterstate);
+
+  const carModalCont = useModalContext();
 
   // Full Car List
   useEffect(() => {
@@ -70,6 +74,7 @@ export default function Home() {
       <FilterOption brands={brandList} />
 
       <CarList carList={carsList} />
+      <CarModal />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
-import { FilterContext } from "../../contexts/FilterContext";
+import { FilterContext } from "../../../contexts/FilterContext";
 import { TiDelete } from "react-icons/ti";
-import { useLocation } from "../../contexts/LocationContext";
+import { useLocation } from "../../../contexts/LocationContext";
 
 type FilterProps = {
   brands: string[];
@@ -37,7 +37,7 @@ const FilterOption = ({ brands }: FilterProps) => {
       </div>
 
       <div className="mt-3 flex items-center gap-3">
-        <select
+        {/* <select
           value={minMax}
           className="select bg-white font-bold text-black md:block hidden"
           onChange={(e) => {
@@ -50,7 +50,7 @@ const FilterOption = ({ brands }: FilterProps) => {
           <option>None</option>
           <option>Lowest</option>
           <option>Highest</option>
-        </select>
+        </select> */}
 
         <select
           value={brandOption}

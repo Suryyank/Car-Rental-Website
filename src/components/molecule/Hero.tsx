@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Button from "./atoms/Button";
+import Button from "../atoms/Button";
 const Hero = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 my-5">
