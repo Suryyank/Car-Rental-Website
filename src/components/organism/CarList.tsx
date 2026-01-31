@@ -34,11 +34,17 @@ const CarList = ({ carList }: CarListProps) => {
   }, [carList, filters, location]);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {filteredCars.map((car) => (
-        <CarCard key={car.carId} car={car} />
-      ))}
-    </div>
+    <>
+      <div
+        id="carlist"
+        className="w-full h-[2px] bg-slate-400/20 mt-5 rounded-full"
+      />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-5">
+        {filteredCars.map((car) => (
+          <CarCard key={car.carId} car={car} />
+        ))}
+      </div>
+    </>
   );
 };
 

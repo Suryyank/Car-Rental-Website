@@ -21,7 +21,7 @@ const CarCard = (props: any) => {
         carmodal.setSelectedCar(car);
       }}
     >
-      <div className="rounded-2xl px-8 py-3 hover:scale-102 hover:outline-2 outline-primary border-slate-300 border duration-210 mt-5 flex flex-col items-center bg-gray-200/10 shadow-md">
+      <div className="relative  rounded-2xl px-8 py-3 hover:scale-102 hover:outline-2 outline-primary border-slate-300 border duration-210 mt-5 flex flex-col items-center bg-gray-200/20">
         <h2 className="text-[25px] font-bold text-black mb-2 font-mono">
           {car.name}
         </h2>
@@ -43,7 +43,7 @@ const CarCard = (props: any) => {
 
         <div className="flex justify-between gap-20">
           <div className="flex flex-col items-center">
-            <GiSteeringWheel className="text-black size-8" />
+            <GiSteeringWheel className="text-black size-8" color="bg-primary" />
             <h2 className="text-black font-medium">{car.carType}</h2>
           </div>
           <div className="flex flex-col items-center">

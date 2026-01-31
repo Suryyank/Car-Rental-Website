@@ -1,11 +1,12 @@
 import React from "react";
 import FormInput from "../atoms/FormInput";
-import { useForm, SubmitHandler, Resolver } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { EnquiryFormSchema } from "../../../schema/FormSchema";
 import {
   LuCalendarArrowDown,
   LuCalendarArrowUp,
+  LuContact,
   LuMapPin,
   LuUser,
 } from "react-icons/lu";
@@ -30,14 +31,25 @@ const EnquiryForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="grid gap-5 sm:w-[500px]">
-      <div className="">
-        <FormInput
-          labelText={"Name*"}
-          icons={<LuUser color="black" />}
-          placeholder="Full Name"
-          message={errors.name?.message}
-          {...register("name")}
-        />
+      <div className="flex justify-between items-center gap-5 bg-black/0">
+        <div className="w-full">
+          <FormInput
+            labelText={"Name*"}
+            icons={<LuUser color="black" />}
+            placeholder="Full Name"
+            message={errors.name?.message}
+            {...register("name")}
+          />
+        </div>
+        <div className="w-full">
+          <FormInput
+            {...register("carName")}
+            labelText="Car Name :"
+            extraCss="font-bold"
+            value={car.selectedCar?.name}
+            readOnly
+          />
+        </div>
       </div>
       <div className="">
         <FormInput
@@ -50,8 +62,8 @@ const EnquiryForm = () => {
       </div>
       <div className="">
         <FormInput
-          labelText={"Contact* (+91)"}
-          icons={<LuMapPin color="black" />}
+          labelText={"Contact (+91)*"}
+          icons={<LuContact color="black" />}
           placeholder="(+91)"
           message={errors.contact?.message}
           {...register("contact")}

@@ -58,9 +58,8 @@ const DebounceSearch = ({ Headings, locationListArr }: DebounceSearchProps) => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center w-full px-4 space-y-4">
+    <div className="flex flex-col items-center justify-center w-full px-4">
       {Headings && <Headings title="Find Near You" />}
-
       {/* Search Wrapper */}
       <div className="relative w-full max-w-sm" ref={wrapperRef}>
         {/* Search Bar */}
@@ -80,7 +79,7 @@ const DebounceSearch = ({ Headings, locationListArr }: DebounceSearchProps) => {
 
           <input
             type="text"
-            placeholder="Search Location"
+            placeholder="Find Near You"
             value={locationFilter}
             onFocus={() => setShowResults(true)}
             onChange={(e) => {

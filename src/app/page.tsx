@@ -74,6 +74,7 @@ export default function Home() {
       <FilterOption brands={brandList} />
 
       <CarList carList={carsList} />
+
       <CarModal />
     </div>
   );

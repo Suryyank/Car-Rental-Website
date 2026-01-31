@@ -16,6 +16,11 @@ const Hero = () => {
           title="Explore Now"
           type="button"
           className="my-4 hover:bg-blue-800 hover:cursor-pointer"
+          onClick={() => {
+            document
+              .getElementById("carlist")
+              ?.scrollIntoView({ behavior: "smooth" });
+          }}
         />
       </div>
       <div className="px-4 sm:px-8 md:px-12 lg:px-20">

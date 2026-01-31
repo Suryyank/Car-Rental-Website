@@ -10,13 +10,6 @@ import { type Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/molecule/NavBar";
-import { ThemeContextProvider } from "../../contexts/themecontext";
-import { ThemeWrapper } from "../../contexts/themeWrapper";
-import {
-  FilterContext,
-  FilterContextProvider,
-} from "../../contexts/FilterContext";
-import { LocationContextProvider } from "../../contexts/LocationContext";
 import { ContextWrapper } from "../../contexts/ContextWrapper";
 
 const geistSans = Geist({

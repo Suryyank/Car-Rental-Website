@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { FilterContext } from "../../../contexts/FilterContext";
 import { TiDelete } from "react-icons/ti";
 import { useLocation } from "../../../contexts/LocationContext";
+import SearchInput from "./SearchInput";
 
 type FilterProps = {
   brands: string[];
@@ -33,7 +34,6 @@ const FilterOption = ({ brands }: FilterProps) => {
     <div className="mt-10 flex justify-between">
       <div>
         <h2 className="text-[30px] font-bold text-black">Content Filter</h2>
-        <h2 className="text-gray-700 font-semibold">Explore our catalogue</h2>
       </div>
 
       <div className="mt-3 flex items-center gap-3">
