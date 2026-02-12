@@ -1,19 +1,17 @@
 "use client";
 import FilterOption from "@/components/molecule/FilterOption";
 import Hero from "@/components/molecule/Hero";
-import SearchInput from "@/components/molecule/SearchInput";
+
 import { getCarsList, getCarBrands, getLocationList } from "../../service";
 import { Car } from "../../service/types";
 import { FilterContext } from "../../contexts/FilterContext";
 
 import { useEffect, useState, useContext } from "react";
 import CarList from "@/components/organism/CarList";
-import DebounceSearch from "@/components/molecule/DebounceSearch";
-import Headings from "@/components/atoms/Headings";
+
 import CarModal from "@/components/molecule/CarModal";
 import { useModalContext } from "../../contexts/modal/ModalContext";
 import { toast, ToastContainer, Bounce } from "react-toastify";
-import BrandPillBar from "@/components/molecule/BrandPillBar";
 
 export default function Home() {
   const [carsList, setCarsList] = useState<Car[]>([]);
@@ -23,8 +21,6 @@ export default function Home() {
 
   const filterstate = useContext(FilterContext);
   console.log(filterstate);
-
-  const carModalCont = useModalContext();
 
   // Full Car List
   useEffect(() => {
