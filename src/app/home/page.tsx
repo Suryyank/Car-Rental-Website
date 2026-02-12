@@ -8,7 +8,7 @@ import { getCarBrands, getCarsList } from "../../../service";
 import { Car } from "../../../service/types";
 import FilterOption from "@/components/molecule/FilterOption";
 import CarList from "@/components/organism/CarList";
-const page = () => {
+const Page = () => {
   const [brandList, setBrandList] = useState<string[]>([]);
   const [carsList, setCarsList] = useState<Car[]>([]);
 
@@ -47,4 +47,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
