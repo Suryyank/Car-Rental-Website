@@ -7,12 +7,13 @@ import { Car } from "../../service/types";
 import { FilterContext } from "../../contexts/FilterContext";
 
 import { useEffect, useState, useContext } from "react";
-import CarCard from "@/components/molecule/CarCard";
 import CarList from "@/components/organism/CarList";
 import DebounceSearch from "@/components/molecule/DebounceSearch";
 import Headings from "@/components/atoms/Headings";
 import CarModal from "@/components/molecule/CarModal";
 import { useModalContext } from "../../contexts/modal/ModalContext";
+import { toast, ToastContainer, Bounce } from "react-toastify";
+import BrandPillBar from "@/components/molecule/BrandPillBar";
 
 export default function Home() {
   const [carsList, setCarsList] = useState<Car[]>([]);
@@ -62,19 +63,19 @@ export default function Home() {
     getLocationList_();
   }, []);
 
+  const successToast = () => {
+    toast("Enquiry Sent");
+  };
+
   return (
     <div className="p-5 sm:px-10 md:px-20">
       <Hero />
-      <DebounceSearch
-        locationListArr={locationList}
-        Headings={Headings}
-        carList={carsList}
-      />
+
       {/* <SearchInput /> */}
       <FilterOption brands={brandList} />
 
       <CarList carList={carsList} />
-
+      <ToastContainer />
       <CarModal />
     </div>
   );

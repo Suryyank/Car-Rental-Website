@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import Button from "@/components/atoms/Button";
+import { usePathname } from "next/navigation";
 // import {
 //   SignInButton,
 //   SignUpButton,
@@ -9,7 +12,13 @@ import Button from "@/components/atoms/Button";
 //   UserButton,
 // } from "@clerk/nextjs";
 
+const forbiddenPathname = ["/home"];
+
 const NavBar = () => {
+  const pathName = usePathname();
+  if (forbiddenPathname.includes(pathName)) {
+    return null;
+  }
   return (
     <div className="flex items-center justify-between w-full relative ">
       <div /*className="absolute left-0 pl-4 flex items-center"*/>

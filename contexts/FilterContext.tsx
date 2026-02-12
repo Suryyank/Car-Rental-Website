@@ -1,5 +1,5 @@
 "use client";
-import { createContext, use, useState } from "react";
+import { createContext, useContext, useState, useMemo } from "react";
 import {
   FilterState,
   FilterContextTypes,
@@ -7,7 +7,7 @@ import {
 } from "./types/FilterTypes";
 
 export const FilterContext = createContext<FilterContextTypes | undefined>(
-  undefined
+  undefined,
 );
 
 export function FilterContextProvider({
@@ -17,10 +17,30 @@ export function FilterContextProvider({
     brand: "",
     price: "",
   });
+  const isActive = useMemo(() => {
+    return Boolean(filters.brand || filters.price);
+  }, [filters]);
+
+  const clearFilters = () => {
+    setFilters({
+      brand: "",
+      price: "",
+    });
+  };
 
   return (
-    <FilterContext.Provider value={{ filters, setFilters }}>
+    <FilterContext.Provider
+      value={{ filters, setFilters, isActive, clearFilters }}
+    >
       {children}
     </FilterContext.Provider>
   );
 }
+
+export const useFilters = () => {
+  const ctx = useContext(FilterContext);
+  if (!FilterContext) {
+    throw new Error("Use Withing Provider");
+  }
+  return ctx;
+};

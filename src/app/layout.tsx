@@ -8,6 +8,7 @@ import { type Metadata } from "next";
 //   UserButton,
 // } from "@clerk/nextjs";
 import { Geist, Geist_Mono } from "next/font/google";
+import { interFont } from "@/fonts/fonts";
 import "./globals.css";
 import NavBar from "@/components/molecule/NavBar";
 import { ContextWrapper } from "../../contexts/ContextWrapper";

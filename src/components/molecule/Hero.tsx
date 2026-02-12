@@ -1,11 +1,16 @@
 import React from "react";
 import Image from "next/image";
 import Button from "../atoms/Button";
+
+import { interFont } from "@/fonts/fonts";
+
 const Hero = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 my-5">
       <div>
-        <h2 className="text-black font-bold text-[40px]">
+        <h2
+          className={`text-black font-extrabold text-[40px] ${interFont.className}`}
+        >
           Rent Out Cars with Wheelie in Minutes
         </h2>
         <h2 className="text-gray-700 text-[20px]">
@@ -33,6 +38,7 @@ const Hero = () => {
           sizes="(max-width: 640px) 100vw,
            (max-width: 1024px) 90vw,
            1200px"
+          loading="lazy"
         />
       </div>
     </div>

@@ -9,6 +9,8 @@
   --color-primary: #155dfc;
   --color-secondary: #193cb8;
   --foreground: #171717;
+  --toastify-color-progress-success: #155dfc;
+  --toastify-color-progress-light: #155dfc;
 }
 
 [data-theme="red"]{
@@ -37,3 +39,4 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+

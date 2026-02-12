@@ -13,10 +13,7 @@ import {
 import Button from "../atoms/Button";
 import { useModalContext } from "../../../contexts/modal/ModalContext";
 import { EnquiryFormValues } from "../../../schema/FormSchema";
-
-const onSubmit: SubmitHandler<EnquiryFormValues> = (data) => {
-  console.log(data);
-};
+import { Bounce, toast, ToastContainer } from "react-toastify";
 
 const EnquiryForm = () => {
   const {
@@ -26,13 +23,34 @@ const EnquiryForm = () => {
   } = useForm<EnquiryFormValues>({
     resolver: zodResolver(EnquiryFormSchema),
   });
+
   const car = useModalContext();
   const carname = car.selectedCar?.name;
 
+  const onSubmit: SubmitHandler<EnquiryFormValues> = (data) => {
+    toast("Enquiry Sent", {
+      position: "top-center",
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+      className: "mt-5 text-black",
+    });
+    console.log(data);
+    car.setIsOpen(false);
+  };
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="grid gap-5 sm:w-[500px]">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="grid gap-5 sm:w-[500px] max-sm:w-auto"
+    >
       <div className="flex justify-between items-center gap-5 bg-black/0">
-        <div className="w-full">
+        <div className="w-full max-sm:w-auto">
           <FormInput
             labelText={"Name*"}
             icons={<LuUser color="black" />}

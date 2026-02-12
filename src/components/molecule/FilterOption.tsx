@@ -1,8 +1,12 @@
 import { useState, useEffect, useContext } from "react";
-import { FilterContext } from "../../../contexts/FilterContext";
+import { useFilters } from "../../../contexts/FilterContext";
 import { TiDelete } from "react-icons/ti";
+import { getLocationList } from "../../../service";
+import Headings from "../atoms/Headings";
 import { useLocation } from "../../../contexts/LocationContext";
 import SearchInput from "./SearchInput";
+import BrandPillBar from "./BrandPillBar";
+import DebounceSearch from "./DebounceSearch";
 
 type FilterProps = {
   brands: string[];
@@ -12,8 +16,19 @@ type FilterProps = {
 const FilterOption = ({ brands }: FilterProps) => {
   const [brandOption, setBrandOption] = useState<string>("");
   const [minMax, setMinMax] = useState<string>("");
+  const [locationList, SetLocationList] = useState<string[]>([]);
 
-  const { setFilters } = useContext(FilterContext)!;
+  const getLocationList_ = async () => {
+    const location = await getLocationList();
+    SetLocationList(location);
+    console.log("Locations are ", location);
+  };
+
+  useEffect(() => {
+    getLocationList_();
+  }, []);
+
+  const { isActive, setFilters, clearFilters, filters } = useFilters();
 
   useEffect(() => {
     setFilters({
@@ -22,22 +37,18 @@ const FilterOption = ({ brands }: FilterProps) => {
     });
   }, [brandOption, minMax, setFilters]);
 
-  const handleClearFilters = () => {
-    setBrandOption("");
-    setMinMax("");
-  };
-
-  const areFiltersActive =
-    (brandOption && brandOption !== "None") || (minMax && minMax !== "None");
-
   return (
-    <div className="mt-10 flex justify-between">
-      <div>
-        <h2 className="text-[30px] font-bold text-black">Content Filter</h2>
-      </div>
+    <div>
+      <div className="mt-10 flex items-center">
+        <div>
+          <h2 className="text-[25px] font-semibold text-black">Filters</h2>
+        </div>
+        <div className="w-full">
+          <DebounceSearch locationListArr={locationList} Headings={Headings} />
+        </div>
 
-      <div className="mt-3 flex items-center gap-3">
-        {/* <select
+        <div className="mt-3 flex items-center gap-3 ">
+          {/* <select
           value={minMax}
           className="select bg-white font-bold text-black md:block hidden"
           onChange={(e) => {
@@ -52,33 +63,36 @@ const FilterOption = ({ brands }: FilterProps) => {
           <option>Highest</option>
         </select> */}
 
-        <select
-          value={brandOption}
-          className="select bg-white font-bold text-black w-auto "
-          onChange={(e) => {
-            setBrandOption(e.target.value);
-          }}
-        >
-          <option value="" disabled>
-            Brand
-          </option>
-          <option>None</option>
-          {brands.map((brand) => (
-            <option key={brand} value={brand}>
-              {brand}
+          <select
+            value={filters.brand}
+            className="select bg-white font-bold text-black w-[100px] truncate"
+            onChange={(e) => {
+              setBrandOption(e.target.value);
+            }}
+          >
+            <option value="" disabled>
+              Brand
             </option>
-          ))}
-        </select>
-        <button
-          onClick={handleClearFilters}
-          disabled={!areFiltersActive}
-          className={`btn rounded-2xl border-0 bg-primary p-3 transition-all ${
-            areFiltersActive ? "visible opacity-100" : "invisible opacity-0"
-          }`}
-        >
-          <TiDelete className="size-5 md:hidden" />
-          <div className="md:block hidden">Clear</div>
-        </button>
+            <option>None</option>
+            {brands.map((brand) => (
+              <option key={brand} value={brand}>
+                {brand}
+              </option>
+            ))}
+          </select>
+          <button
+            onClick={clearFilters}
+            className={`btn rounded-2xl border-0 bg-primary p-3 transition-all ${
+              isActive ? "visible opacity-100" : "invisible opacity-0"
+            }`}
+          >
+            {isActive && <TiDelete className="size-5 md:hidden" />}
+            <div className="md:block hidden">Clear</div>
+          </button>
+        </div>
+      </div>
+      <div className="max-sm:hidden">
+        <BrandPillBar brands={brands} />
       </div>
     </div>
   );
