@@ -39,7 +39,7 @@ export function FilterContextProvider({
 
 export const useFilters = () => {
   const ctx = useContext(FilterContext);
-  if (!FilterContext) {
+  if (!ctx) {
     throw new Error("Use Withing Provider");
   }
   return ctx;
