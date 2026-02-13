@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Button from "@/components/atoms/Button";
 import { usePathname } from "next/navigation";
+import { LuLogIn, LuUserPlus } from "react-icons/lu";
 // import {
 //   SignInButton,
 //   SignUpButton,
@@ -27,22 +28,19 @@ const NavBar = () => {
 
       <div className="hidden md:flex md:justify-center md:gap-4">
         <Button
-          title="Home"
+          title="Log-In"
           type="button"
-          className="hover:bg-secondary hover:cursor-pointer"
+          className="hover:bg-secondary hover:cursor-pointer font-extralight flex items-center justify-center gap-3 "
+          icon={<LuLogIn />}
         />
         <Button
-          title="History"
+          title="Sign-Up"
           type="button"
-          className="hover:bg-secondary hover:cursor-pointer"
-        />
-        <Button
-          title="Contact"
-          type="button"
-          className="hover:bg-secondary hover:cursor-pointer"
+          className="hover:bg-secondary hover:cursor-pointer font-extralight flex items-center justify-center gap-3 "
+          icon={<LuUserPlus />}
         />
       </div>
-      <div className=""></div>
+
       {/* <div>
         <SignedOut>
           <SignInButton>

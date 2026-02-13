@@ -1,5 +1,6 @@
 import React from "react";
 import { useFilters } from "../../../contexts/FilterContext";
+import { motion } from "motion/react";
 
 type Props = {
   brands: string[];

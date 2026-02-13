@@ -39,11 +39,11 @@ const FilterOption = ({ brands }: FilterProps) => {
 
   return (
     <div>
-      <div className="mt-10 flex items-center">
+      <div className="mt-10 flex items-center justify-between">
         <div>
           <h2 className="text-[25px] font-semibold text-black">Filters</h2>
         </div>
-        <div className="w-full">
+        <div className="w-full hidden">
           <DebounceSearch locationListArr={locationList} Headings={Headings} />
         </div>
 

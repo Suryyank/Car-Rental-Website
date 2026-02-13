@@ -12,6 +12,7 @@ import CarList from "@/components/organism/CarList";
 import CarModal from "@/components/molecule/CarModal";
 import { useModalContext } from "../../contexts/modal/ModalContext";
 import { toast, ToastContainer, Bounce } from "react-toastify";
+import FeatureSection from "@/components/organism/FeatureSection";
 
 export default function Home() {
   const [carsList, setCarsList] = useState<Car[]>([]);
@@ -66,13 +67,7 @@ export default function Home() {
   return (
     <div className="p-5 sm:px-10 md:px-20">
       <Hero />
-
-      {/* <SearchInput /> */}
-      <FilterOption brands={brandList} />
-
-      <CarList carList={carsList} />
-      <ToastContainer />
-      <CarModal />
+      <FeatureSection />
     </div>
   );
 }

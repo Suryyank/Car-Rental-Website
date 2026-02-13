@@ -58,12 +58,10 @@ const DebounceSearch = ({ Headings, locationListArr }: DebounceSearchProps) => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center w-full px-4 bg-amber-500/00">
-      {/* {Headings && <Headings title="Find Near You" />} */}
-      {/* Search Wrapper */}
-      <div className="relative w-full max-w-sm" ref={wrapperRef}>
+    <div className="flex flex-col items-center justify-center w-full px-4 bg-red-500/0">
+      <div className="relative w-full max-w-sm:sm" ref={wrapperRef}>
         {/* Search Bar */}
-        <div className="flex items-center bg-gray-200 rounded-full px-4 py-1 w-full">
+        <div className="flex items-center bg-gray-200 rounded-full px-4 w-full">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
